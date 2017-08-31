@@ -1,0 +1,186 @@
+
+<!--권한부여-->
+<!--</%= link_to icon('eye-open'), post %>&nbsp;-->
+<!--</% if user_signed_in? %>-->
+<!--  </%= link_to icon('edit'), edit_post_path(post) if post.updatable_by? current_user %>&nbsp;-->
+<!--  </%= link_to icon('trash'), post, method: :delete, data: { confirm: 'Are you sure?' } if post.deletable_by? current_user %>-->
+<!--</% end %>-->
+<!--권한부여-->
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+.introduction{
+    margin: auto;
+    margin-left: 210px;
+    
+}
+
+.aaa{
+    font-weight: bold;
+    font-size: 40px;
+    padding-top: 80px;
+}
+
+.bbb{
+    color:grey;
+}
+body { 
+    font-family: 'Jeju Gothic', sans-serif;
+    font-size : 20px;
+}
+    
+    
+    .right{
+        float :right;
+        right :0px;
+        padding: 10px;
+        padding-right: 205px;
+    }
+        .table1{
+            
+            margin :auto;
+            width: 70%;
+            text-align: center;
+        }
+        .m1{
+            text-align :center;
+        }
+        
+
+
+.introduction{
+    
+}
+.button2,
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #428bca;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+    
+    
+    
+    
+}
+
+
+.button2:hover {background-color: #3e8e41}
+
+.button2:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class = "introduction">
+        <div class = "aaa" >
+            NETFLIX
+        </div>
+        <div class = "bbb">
+            NETFLIX 계정을 공유하는 게시판입니다
+        </div>
+    </div>
+<div class="right">
+    <div class="search">
+    <%= form_tag posts_searchindex_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], placeholder:"제목/내용으로 검색" %>
+          <%= submit_tag "검색", :name => nil %> 
+    <% end %>
+     </div>
+</div>
+    
+    
+    
+
+
+
+</div>
+<div class="table1">
+
+    <table class="table table-hover">
+         <thead>
+            <tr>
+                 <th width="5%", style="text-align:center">번호</th>
+                 <th width="55%", style="text-align:center">제목</th>
+                 <th width="15%", style="text-align:center">글쓴이</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @posts_netflix.each do |p| %>
+
+            <tr>
+                <td width="5%"> <%= p.id %></td>
+                <td width="55%"><a href='<%= post_path(p.id)%>'><%= p.title %></a></td>
+                <td width="15%"></%= p.email %></td>
+            </tr>
+            <% end %>
+        
+        </tbody>    
+    </table>
+</div>
+<div class="right">
+    
+    <button2 class="button2"><%= link_to '글쓰기', '/posts/new' %></button2>
+</div>
+<div class="m1">
+    <br><br><br>
+    
+    
+  <div class="digg_pagination" style="text-align: center, padding-left:20px">
+    <!--<div class="page_info">-->
+    <!--  <%= page_entries_info @posts %>-->
+    <!--</div>-->
+    <%= will_paginate @posts, :container => false %>
+  </div>
+  
+  
+  <br>
+    
+    
+    
+    
+<button class="button"  style="vertical-align:middle"><span>
+<%=link_to '메인으로' , root_path %></span></button>
+</div>
+
+
+</body>

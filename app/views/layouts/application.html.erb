@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--  부트스트랩-->
+<head>
+<%=favicon_link_tag 'favicon.png'%>  
+  
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  <!--이 아래부터 부트스트랩-->
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <!--이 위까지 부트스트랩-->
+<style>
+
+
+#nab{
+  
+  width:100%;
+  height:auto;
+  color: white;
+}
+
+#nab-wrapper{
+  
+  background-color: transparent;
+  margin-left:auto;
+  margin-right:auto;
+  opacity: 0.7 ;
+  fiter:alpha (opacity=20);
+  position: fixed;
+  width: 100%;
+  
+}
+
+#nab-wrapper ul li:hover{
+background-color: #d9534f;
+transition: all 0.45s;
+opacity:0.5;
+fiter:alpha (opacity=70);
+}
+
+#nab-wrapper a{
+color: black;
+text-decoration: none;
+padding: 5px;
+}
+
+
+</style>  
+
+  </head>
+  
+<body>
+<div class="itsimportant">
+      <div id="nab">
+        <div id="nab-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-faded" >
+        <a class="navbar-brand" href="https://shareid-refreshment.c9users.io/"><img alt="" src="/assets/brand.png"></a>
+      
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"  >
+          <ul class="navbar-nav mr-auto navbar-left">
+            <li class="nav-item active">
+              <a class="nav-link" href="https://shareid-refreshment.c9users.io/">HOME<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://shareid-refreshment.c9users.io/posts/index">NETFLIX</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://shareid-refreshment.c9users.io/posts/index3">BLACKLIST</a>
+            </li>
+            
+              <li class="nav-item">
+                <a class="nav-link" href="https://shareid-refreshment.c9users.io/posts/index2"> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</a>
+              </li>
+           
+          </ul>
+          
+        
+          <ul class="navbar-nav justify-content-end navbar-right">
+              <% if user_signed_in? %>
+                 <li class="nav-item">
+                  <span class="navbar-text">
+                      <strong><%= current_user.email%></strong>님 환영합니다!
+                  </span>
+                  </li>
+                
+                  <li class="nav-item">
+                      <!--<a class="nav-link" href="https://netflix-juan1104.c9users.io/users/sign_out">로그아웃</a>-->
+                    <a class="nav-link">  <%= link_to '로그아웃', destroy_user_session_path, :method => :delete %></a>
+              
+                  </li>
+              <% else %>
+                  <li class="nav-item">
+                      <a class="nav-link" href="https://shareid-refreshment.c9users.io/users/sign_in">로그인</a>
+        
+                      <!--</%= link_to '로그인', new_user_session_path %>-->
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="https://shareid-refreshment.c9users.io//users/sign_up">회원가입</a>
+                    
+                      <!--</%= link_to '회원가입', new_user_registration_path %>-->
+                  </li>
+              <% end %>        
+          </ul>
+      
+        </div>
+      </nav>
+      </div>
+      
+     
+</div>    
+      
+      
+        
+
+
+<%= yield %>
+
+</body>
+</html>
+

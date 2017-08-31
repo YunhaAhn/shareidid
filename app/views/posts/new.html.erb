@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<style>
+
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.button2,
+.button {
+  
+    font-family: 'Jeju Gothic', sans-serif;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #428bca;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  /*padding: 20px;*/
+  width: 150px;
+  height: 30px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+    
+    
+    
+    
+}
+
+
+.button2:hover {background-color: #3e8e41}
+
+.button2:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+body{
+    background: -webkit-linear-gradient(left top, #64dace, 	#54a5dd);;
+    font-family: 'Jeju Gothic', sans-serif;
+}
+
+select{
+    overflow:hidden;
+    width:350px;
+    -moz-border-radius: 9px 9px 9px 9px;
+    -webkit-border-radius: 9px 9px 9px 9px;
+    border-radius: 9px 9px 9px 9px;
+    box-shadow: 1px 1px 11px white;
+    background: white; 
+}
+
+.newpost_title{
+    width: 100%;
+    padding: 0px 1px;
+    /*margin: 8px 0;*/
+    margin: auto;
+    justify-content:center;
+    width: max-content;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    /*margin: 8px 0;*/
+    box-sizing: border-box;
+    box-shadow: 1px 1px 11px white;
+    border: 2px solid white;
+    border-radius: 10px
+}
+
+.newpost_body{
+    /*width: 100%;*/
+    /*margin:0;*/
+    /*padding:0;*/
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    /*border: 2px solid orange;*/
+    border-radius: 10px;
+    width: max-content;
+    margin: auto;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 10px;
+    /*background-color: #f8f8f8;*/
+    font-size: 16px;
+    resize: none;
+     box-shadow: 1px 1px 11px white;
+}
+
+.main{
+    margin:0, 0, 0, 10;
+    text-align:center;
+}
+
+.board_section {
+     margin: 5% auto;
+}
+
+
+.category{
+     justify-content:center;
+     margin: 0;
+}
+
+input[type='submit']{
+    border:none;
+    background-color:white;
+    color:black;
+    font-size:15px;
+    padding:3px 10px;
+    border-radius: 15px;
+    width: 50%
+    margin: auto;
+    /*height: 10px;*/
+    display: inline-block 
+    text-align: center;
+    margin: auto !important;
+    box-shadow: 1px 1px 11px white;
+    }
+    
+
+
+</style>
+
+
+<html>
+    
+    <body>
+<section class = "board_section" >
+<br><br><br><br><br>
+<%= form_for @post do |f| %>
+    <div class = "select_box">
+    <center> <%= f.select :category_id, options_from_collection_for_select(@categories,"id", "name") %> </center><br><br>
+    </div>
+    <div class="newpost_title">
+    <%= f.text_field :title, :size=>"97", placeholder: '제목을 입력해주세요'  %><br>
+    </div> <br>
+     <div class="newpost_body">
+    <%= f.text_area :content, placeholder: '내용을 입력해주세요', cols: "100", rows: "10",maxlength:3000 %>
+   
+    </div>
+    <br>
+    
+        <center> <%= f.submit '올리기'%> </center>
+     
+    <br><br>
+<% end %>
+</section>
+<button class="button"  style="vertical-align:middle"><span>
+<%=link_to '메인으로' , root_path %></span></button>
+<br><br><br><br><br>
+</body>
+</html>
+
+ 

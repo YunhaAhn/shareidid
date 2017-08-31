@@ -1,0 +1,54 @@
+<head>
+    <style>
+        .right{
+        float :right;
+        right :0px;
+        padding: 10px;
+        padding-right: 205px;
+    }
+        .table1{
+            
+            margin :auto;
+            width: 70%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<div class="wholebox">
+
+
+    
+    <img src="/assets/freecon.png" >
+    <br>
+    
+<%= link_to '목록으로 돌아가기', posts_path %>
+<br>
+
+<div class="search">
+<%= form_tag posts_searchindex_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search], placeholder:"제목/내용/작성자" %>
+      <%= submit_tag "Search", :name => nil %>
+<% end %>
+</div><br><br>
+    
+<br>
+<div class="table1">
+    <table>
+      <thead>
+            <tr>
+             <th width="5%", style="text-align:center">번호</th>
+             <th width="55%", style="text-align:center">제목</th>
+            </tr>
+      </thead>
+      <tbody>
+              <% @posts.each do |post| %>
+              <tr>
+                    <td width-"5%"> <%= post.id %></td>
+                    <td width="55%"><a href='<%= post_path(post)%>'><%= post.title %></a></td>
+              </tr>
+              <%end%>
+      </tbody>
+    </table> 
+</div>
+    </div>
